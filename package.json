@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "engine": {
-    "node": "^14.17.2"
+    "node": "^14.20.1"
   },
   "scripts": {
     "dev": "nodemon server.js"
