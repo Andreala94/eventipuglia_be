@@ -1,0 +1,20 @@
+POST  http://localhost:6060/newevents/create
+Content-Type: application/json
+
+{
+    "titolo": "cala cesara",
+    "luogo": "monopoli",
+    "immagine":"https://turismo.puglia.it/wp-content/uploads/sites/124/monopoli-hd.jpg",
+    "descrizione": "posto molto bello",
+    "prezzo": "gratis",
+    "datetime": "15/05/2023 20:00"
+
+}
+
+########
+GET http://localhost:6060/eventi
+Content-Type: application/json
+
+######
+GET http://localhost:6060/eventi/64f758aea039688dd47aa60b
+Content-Type: application/json

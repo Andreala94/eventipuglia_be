@@ -1,0 +1,26 @@
+POST http://localhost:6060/shop/biglietto
+Content-Type: application/json
+
+{
+  "carrello":  [
+        {
+    "titolo": "cala cesara",
+    "id": "654d65sgd5fd",
+    "immagine":"https://turismo.puglia.it/wp-content/uploads/sites/124/monopoli-hd.jpg",
+    "quantita": 1,
+    "prezzo": 0
+        }
+    ],
+    "idUtente": "idUtente"
+   
+
+}
+
+#########
+GET http://localhost:6060/shop/biglietto
+Content-Type: application/json
+
+##########
+GET http://localhost:6060/shop/biglietto/idUtente
+Content-Type: application/json
+
