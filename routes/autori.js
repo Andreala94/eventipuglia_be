@@ -32,7 +32,12 @@ const cloudStorage = new CloudinaryStorage({
 
 const cloudUpload = multer ({ storage: cloudStorage }) // caricare immagine incloud
 
+// Endpoint HTTP POST per caricare immagini su Cloudinary.
 autoriR.post("/authors/cloudUpload", cloudUpload.single("avatar"), async (req, res) => {
+     // Gestisce l'upload del file utilizzando il middleware multer.
+    // Il middleware cloudUpload è configurato per caricare un singolo file con il nome avatar.
+
+    // Se l'upload del file ha esito positivo, restituisce una risposta HTTP 200 con il path del file caricato.
     try {
         res.status(200).json({ avatar: req.file.path });
     } catch (error) {
@@ -99,7 +104,7 @@ autoriR.get("/authors", async (req, res) => {
 })
 
 autoriR.post("/login/authors", async (req,res)=>{
-
+     // Recupera l'utente dal database in base all'indirizzo e-mail fornito dall'utente nella richiesta.
     const user = await Autore.findOne({ email: req.body.email });
    
     if (!user) {
@@ -108,7 +113,7 @@ autoriR.post("/login/authors", async (req,res)=>{
             message: "Email o Password errati",
         });
     }
-
+// Verifica la password fornita dall'utente con la password salvata nel database.
     const validPassword = await bcrypt.compare(req.body.password, user.password);
 
     if (!validPassword) {
@@ -131,7 +136,7 @@ autoriR.post("/login/authors", async (req,res)=>{
         process.env.JWT_SECRET,
         { expiresIn: "24h" } // dopo quando deve scadere il token
     );
-
+// Imposta l'header Authorization della risposta con il token JWT.
     res.header('Authorization', token).status(200).send({
         statusCode: 200,
         message: "Login effettuato con successo!",
